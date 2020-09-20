@@ -1,5 +1,5 @@
 
-public abstract class Person
+public class Person
 {
 	String name;
 	void talk()

@@ -1,5 +1,5 @@
 
-public abstract class Location
+public class Location
 {
 	Person p;
 	Item a, b;
@@ -8,7 +8,7 @@ public abstract class Location
 	
 	void look()
 	{
-	System.out.println(desc);
+		System.out.println(desc);
 	}
 
 	public Location(Person p, Item a, Item b, Location north, Location south, Location east, Location west, String desc)
