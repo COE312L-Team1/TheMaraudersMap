@@ -8,7 +8,7 @@ public class Location
 	
 	void look()
 	{
-		System.out.println(desc);
+		System.out.println(this.desc);
 	}
 
 	public Location(Person p, Item a, Item b, Location north, Location south, Location east, Location west, String desc)
