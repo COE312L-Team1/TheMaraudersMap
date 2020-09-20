@@ -23,4 +23,6 @@ public class Location
 		this.desc = desc;
 	}
 
+	public Location() {};
+	
 }
