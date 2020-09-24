@@ -1,6 +1,7 @@
 
 public class Location
 {
+	String name;
 	Person p;
 	Item a, b;
 	Location north, south, east, west;
@@ -22,8 +23,9 @@ public class Location
 				
 	}
 
-	public Location(String desc, Person p, Item a, Item b, Location north, Location south, Location east, Location west)
+	public Location(String name, String desc, Person p, Item a, Item b, Location north, Location south, Location east, Location west)
 	{
+		this.name = name;
 		this.p = p;
 		this.a = a;
 		this.b = b;

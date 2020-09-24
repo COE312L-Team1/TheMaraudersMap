@@ -53,13 +53,13 @@ public class main
 		}
 		else if(type==2) {
 			if (cmd.toLowerCase().contains("north") && curr.north != null)
-			{ curr = curr.north; curr.look(); }//we actually need to say "You have entered the curr.name" but we didnt make curr.name
+			{ curr = curr.north; System.out.println("You have entered the "+curr.name); }
 			else if(cmd.toLowerCase().contains("south") && curr.south != null)
-			{ curr = curr.south; curr.look(); }
+			{ curr = curr.south; System.out.println("You have entered the "+curr.name); }
 			else if(cmd.toLowerCase().contains("east") && curr.east != null)
-			{ curr = curr.east; curr.look(); }
+			{ curr = curr.east; System.out.println("You have entered the "+curr.name); }
 			else if(cmd.toLowerCase().contains("west") && curr.west != null)
-			{ curr = curr.west; curr.look(); }
+			{ curr = curr.west; System.out.println("You have entered the "+curr.name); }
 			else
 			{ System.out.println("You cannot "+verb+" there!"); }
 		}
@@ -69,7 +69,7 @@ public class main
 			else
 			{ System.out.println("You see no such person!"); }
 		}
-		else { //use item
+		else if(cmd.toLowerCase().contains(curr.a.name.toLowerCase()) || cmd.toLowerCase().contains(curr.b.name.toLowerCase())) { //use item
 			
 			for(int i=0;cmd.charAt(i)!=' ';i++) {verb+=cmd.charAt(i);}
 			
@@ -80,14 +80,16 @@ public class main
 			else
 			{ System.out.println("You see no such thing!"); }
 		}
+		else
+		{
+			System.out.println("I do not understand that. You could try the help command"); //need to add help command
+		}
 	}
 	
-	
- 
 	public static void main(String[] args)
 	{
-		// Location params: String desc, Person p, Item a, Item b, Location north, Location south, Location east, Location west
-		Location Entrance = new Location("\t\tThe Entrance\n\nYou arrive at the doors of Hogwarts. The door on the north wall leads to\r\nthe dining hall, the door to the east leads to the Potions class, and\r\nthe door to the west leads to the Library.",
+		// Location params: String name, String desc, Person p, Item a, Item b, Location north, Location south, Location east, Location west
+		Location Entrance = new Location("The Entrance", "You arrive at the doors of Hogwarts. The door on the north wall leads to\r\nthe dining hall, the door to the east leads to the Potions class, and\r\nthe door to the west leads to the Library.",
 							null, null, null, null, null, null, null);
 		
 		Person Dumbledore = new Person("Dumbledore",
@@ -95,35 +97,48 @@ public class main
 				new String[]{"Hello there, young student!","Would you care for some sherbet lemons?","It does not do to dwell on dreams and forget to live!","Are you still here? Quit bothering me!","Can't you see I'm busy? Please don't disturb me!","The truth. It is a beautiful and terrible thing, and should therefore be treated with great caution.","Have you seen my hat? I could swear I left it here!","You can come to my office any time. My DumbleDoor is always open!"});
 		
 		Item food = new Item("Food","On the tables, you see all sorts of delicious food, from roast chicken to treacle tarts!",new String[] {"eat","consume"});
-		Item hat = new Item("Sorting hat","At the end of the hall, on a small wooden stool, sits the legendary Sorting Hat,\r\nstill wrinkled, dirty and frayed.",new String[] {"wear"});
-		Location greatHall = new Location("\t\tThe Great Hall\n\nYou are walking up a huge hall with a towering ceiling, lit by thousands of floating\r\ncandles. You see four long tables, one for each house, being set\r\nfor the feast.",
+		Item hat = new Item("Sorting hat","At the end of the hall, on a small wooden stool, sits the legendary Sorting Hat,\r\nstill wrinkled, dirty and frayed.",new String[] {"wear","use"});
+		Location greatHall = new Location("The Great Hall", "You are walking up a huge hall with a towering ceiling, lit by thousands of floating\r\ncandles. You see four long tables, one for each house, being set\r\nfor the feast.",
 							 				Dumbledore, food, hat, null, Entrance, null, null);
 		
 		Entrance.north = greatHall;
 		
-		/*
-		 * 
-		 * Add book, quill and Library
-		 * Add cauldron, potion and PotionsClassroom
-		 * IMP: Set neighboring locations for all 
-		 * 
-		 * */
+		Person Hermoine = new Person("Hermoine",
+				"desc",
+				new String[]{"dialog1","dialog2"});
 		
+		Item book = new Item("Book","desc",new String[] {"read"});
+		Item quill = new Item("Quill","desc",new String[] {"write","use"});
+		Location Library = new Location("The Library", "desc",
+							 				Hermoine, book, quill, null, null, null, Entrance);
 		
+		Entrance.east = Library;
 		
-		System.out.println("\"Messrs Moony, Wormtail, Padfoot and Prongs Purveyors of Aids to\r\nmagical Mischief-Makers are proud to present THE MARAUDER'S MAP”\r\nSay the magic phrase to reveal the map.\"");
+		Person Snape = new Person("Snape",
+				"desc",
+				new String[]{"dialog1","dialog2"});
+		
+		Item cauldron = new Item("Cauldron","desc",new String[] {"craft","make","use"});
+		Item potion = new Item("Potion","desc",new String[] {"drink","use"});
+		Location Potions = new Location("The Potions Classroom", "desc",
+							 				Snape, cauldron, potion, null, null, Entrance, null);
+		
+		Entrance.west = Potions;
+		
+		System.out.println("\"Messrs Moony, Wormtail, Padfoot and Prongs Purveyors of Aids to\r\nmagical Mischief-Makers are proud to present THE MARAUDER'S MAP\"\r\nSay the magic phrase to reveal the map.");
 		
 		Scanner jin = new Scanner(System.in);
 		
-		for (int i = 1; !jin.nextLine().equalsIgnoreCase("I solemnly swear that I am up to no good"); i++)
-		{
-			if(i<3) { System.out.println("That's not the right magic phrase! Try again."); }
-			else if(i == 3) { System.out.println("That's not the right magic phrase!\nThis is your last chance!"); }
-			else{ System.out.println("YOU DO NOT KNOW THE PHRASE!\nYou cannot be allowed to see the map... Bye!"); }
-		}
+//		Commented for time being to ease debugging
+//		for (int i = 1; !jin.nextLine().equalsIgnoreCase("I solemnly swear that I am up to no good"); i++)
+//		{
+//			if(i<3) { System.out.println("That's not the right magic phrase! Try again."); }
+//			else if(i == 3) { System.out.println("That's not the right magic phrase!\nThis is your last chance!"); }
+//			else{ System.out.println("YOU DO NOT KNOW THE PHRASE!\nYou cannot be allowed to see the map... Bye!"); }
+//		}
 		
 		curr = Entrance;
-		
+		System.out.println("\t\t"+curr.name);
 		curr.look();
 		
 		System.out.print("> ");
