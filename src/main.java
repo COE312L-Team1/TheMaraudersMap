@@ -95,7 +95,7 @@ public class main
 				new String[]{"Hello there, young student!","Would you care for some sherbet lemons?","It does not do to dwell on dreams and forget to live!","Are you still here? Quit bothering me!","Can't you see I'm busy? Please don't disturb me!","The truth. It is a beautiful and terrible thing, and should therefore be treated with great caution.","Have you seen my hat? I could swear I left it here!","You can come to my office any time. My DumbleDoor is always open!"});
 		
 		Item food = new Item("Food","On the tables, you see all sorts of delicious food, from roast chicken to treacle tarts!",new String[] {"eat","consume"});
-		Item hat = new Item("Sorting hat","At the end of the hall, on a small wooden stool, sits the legendary Sorting Hat,\r\nstill wrinkled, dirty and frayed.",new String[] {"wear","put on"});
+		Item hat = new Item("Sorting hat","At the end of the hall, on a small wooden stool, sits the legendary Sorting Hat,\r\nstill wrinkled, dirty and frayed.",new String[] {"wear"});
 		Location greatHall = new Location("\t\tThe Great Hall\n\nYou are walking up a huge hall with a towering ceiling, lit by thousands of floating\r\ncandles. You see four long tables, one for each house, being set\r\nfor the feast.",
 							 				Dumbledore, food, hat, null, Entrance, null, null);
 		
