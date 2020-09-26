@@ -1,12 +1,12 @@
 import java.util.Random;
 
-public class SortingHat extends Item {
+public class SortingHat extends Item implements randomizer {
 
 	public SortingHat(String name, String desc, String[] verbs) {
 		super(name, desc, verbs);
 	}
 
-	public void randomHouse() {
+	public void randomDialog() {
 		Random r = new Random();
 		String[] houses = {"GRYFFINDOR!", "HUFFLEPUFF!", "RAVENCLAW!", "SLYTHERIN!"};
 		System.out.println("\t" + houses[r.nextInt(houses.length)]);
@@ -16,7 +16,7 @@ public class SortingHat extends Item {
 		
 		Boolean ret =super.use(v);
 		if(ret) {
-			this.randomHouse();
+			this.randomDialog();
 		}
 		return ret;
 	}

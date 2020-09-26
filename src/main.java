@@ -9,13 +9,13 @@ public class main
 	 * 				Great Hall
 	 * 					^
 	 * 					|
-	 *Library <-->	Entrance  <-->	Potions
+	 *Library <-->	Entrance  <-->	Potions Classroom
 	 * 
 	 * */
 	
 	public static Location curr;
 	
-	public static void process(String cmd) {
+	public static void process(String cmd, Location entrance) {
 		
 		String[] look = new String[] {"look","observe","see","watch"};
 		String[] movement = new String[]{"move","go","walk","proceed","advance"};
@@ -54,13 +54,13 @@ public class main
 		}
 		else if(type==2) {
 			if (cmd.toLowerCase().contains("north") && curr.north != null)
-			{ curr = curr.north; System.out.println("You have entered the "+curr.name); }
+			{ curr = curr.north;	curr.enter(); }
 			else if(cmd.toLowerCase().contains("south") && curr.south != null)
-			{ curr = curr.south; System.out.println("You have entered the "+curr.name); }
+			{ curr = curr.south;	curr.enter(); }
 			else if(cmd.toLowerCase().contains("east") && curr.east != null)
-			{ curr = curr.east; System.out.println("You have entered the "+curr.name); }
+			{ curr = curr.east;	curr.enter(); }
 			else if(cmd.toLowerCase().contains("west") && curr.west != null)
-			{ curr = curr.west; System.out.println("You have entered the "+curr.name); }
+			{ curr = curr.west;	curr.enter(); }
 			else
 			{ System.out.println("You cannot "+verb+" there!"); }
 		}
@@ -80,6 +80,26 @@ public class main
 			{ curr.b.use(verb); }
 			else
 			{ System.out.println("You see no such thing!"); }
+		}
+		else if(cmd.toLowerCase().contains("apparate")) {
+			if(cmd.toLowerCase().contains("entrance")) {
+				curr = entrance;	curr.enter();
+			}
+			else if(cmd.toLowerCase().contains("great hall")) {
+				curr = entrance.north;	curr.enter();
+			}
+			else if(cmd.toLowerCase().contains("library")) {
+				curr = entrance.west;	curr.enter();
+			}
+			else if(cmd.toLowerCase().contains("potions")) {
+				curr = entrance.east;	curr.enter();
+			}
+			else {
+				System.out.println("There is no such location on the map!");
+			}
+		}
+		else if(cmd.toLowerCase().equals("help")) {
+			System.out.println("This is the help message.");
 		}
 		else
 		{
@@ -108,15 +128,15 @@ public class main
 				"Huddled over a desk, you spot your friend, Hermione Granger, with her nose buried in a book.\nThis is where you usually find her, and if you have homework due\nthe next day, she's the person to go to!",
 				new String[]{"I'm reading a very interesting book on Blast-Ended Skrewts!","It's LeviOsa, not LeviosA!","Oh, are you doing magic? Let’s see it, then.","Have you seen Crookshanks? He must be off chasing Scabbers again!","I'm not letting you copy my homework again!","Would you like to join the Society for the Protection of Elvish Welfare?"});
 		
-		Item book = new Item("Book","Nearby, you see a pile of books left by a student. Some of them seem interesting.",new String[] {"read"});
-		Item quill = new Item("Quill","You also spot a beautiful Eagle feather quill, that looks like it cost quite a few Galleons!",new String[] {"write with","write","use"});
+		Book book = new Book("Book","Nearby, you see a pile of books left by a student. Some of them seem interesting.",new String[] {"read"});
+		Quill quill = new Quill("Quill","You also spot a beautiful Eagle feather quill, that looks like it cost quite a few Galleons!",new String[] {"write with","write","use"});
 		Location Library = new Location("The Library", "You are in the ancient library of Hogwarts, where knowledge is abundant.\nAll around, you see hundreds of rows, thousands of shelves, filled with books\nof all kinds. From Divination to Dark Arts, there were books for every subject.",
 							 				Hermione, book, quill, null, null, Entrance, null);
 		
 		Entrance.west = Library;
 		
 		Person Snape = new Person("Snape",
-				"Standing in the corner, was the teacher you despised most, Professor Severus Snape,\nHead of Slytherin. Clad in all black robes, his cold stare was enough\nto strike fear into your hearts.",
+				"Standing in the corner, was the teacher you despised most, Professor Severus Snape,\nHead of Slytherin. Clad in all black robes, his cold stare was enough\nto strike fear into your heart.",
 				new String[]{"You there, that is one ugly sweater you're wearing. 10 points from Gryffindor!","Ah, Malfoy, I see you've brought your cauldron. 100 points to Slytherin!","I can teach you how to bottle fame, brew glory, even put a stopper on death.","Why are you all so incompetant?"});
 		
 		Cauldron cauldron = new Cauldron("Cauldron","On your desk, stands the brand new pewter cauldron you bought from\nDiagon Alley last week.", new String[] {"use"});
@@ -147,7 +167,7 @@ public class main
 		
 		while(!input.equalsIgnoreCase("mischief managed"))
 		{
-			process(input);
+			process(input, Entrance);
 			System.out.print("> ");
 			input = jin.nextLine();
 		}

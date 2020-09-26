@@ -23,6 +23,11 @@ public class Location
 				
 	}
 
+	void enter()
+	{
+		System.out.println("You have entered "+this.name);
+	}
+	
 	public Location(String name, String desc, Person p, Item a, Item b, Location north, Location south, Location east, Location west)
 	{
 		this.name = name;
