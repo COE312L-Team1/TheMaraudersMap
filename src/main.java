@@ -85,7 +85,7 @@ public class main
 			if(cmd.toLowerCase().contains("entrance")) {
 				curr = entrance;	curr.enter();
 			}
-			else if(cmd.toLowerCase().contains("great hall")) {
+			else if(cmd.toLowerCase().contains("hall")) {
 				curr = entrance.north;	curr.enter();
 			}
 			else if(cmd.toLowerCase().contains("library")) {
