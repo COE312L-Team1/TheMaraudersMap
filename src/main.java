@@ -99,10 +99,9 @@ public class main
 			}
 		}
 		else if(cmd.toLowerCase().contains("help")) {
-			if(curr.p!=null) {System.out.println("This is the help message.\nYou can use the \"look\" command to go around the " + curr.name + " and\n to know about"+curr.p+" who is in this location. \nYou can also have a chat with"+curr.p+" using the \"talk\" command\n to know more about the items available in the " + curr.name + ".\nTo move to a different location, use the command \"walk\" followed by\nthe direction you would like to move."   );}
-			else {
-				System.out.println("This is the help message.\nYou can use the \"look\" command to go around the " + curr.name + " \nTo move to a different location, use the command \"walk\" followed by\nthe direction you would like to move."   );
-			}
+			
+				System.out.println("Usage:\n\tlook|observe|see|watch\tProvides short description about the location\n\t\t\t\tand characters present\n\n\tmove|go|walk|proceed|advance {north|south|east|west}\n\t\t\t\tMoves the user to a different location using\n\t\t\t\tthe direction argument\n\ttalk|speak|chat character-name\tTalk to the character present\n\t\t\t\tin current location");
+			
 		}
 		else
 		{
