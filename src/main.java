@@ -70,7 +70,7 @@ public class main
 			else
 			{ System.out.println("You see no such person!"); }
 		}
-		else if((curr.a!=null && cmd.toLowerCase().contains(curr.a.name.toLowerCase())) || (curr.b!=null && cmd.toLowerCase().contains(curr.b.name.toLowerCase()))) { //use item
+		else if(cmd.toLowerCase().contains("use")||(curr.a!=null && cmd.toLowerCase().contains(curr.a.name.toLowerCase())) || (curr.b!=null && cmd.toLowerCase().contains(curr.b.name.toLowerCase()))) { //use item
 			
 			for(int i=0;cmd.charAt(i)!=' ';i++) {verb+=cmd.charAt(i);}
 			
