@@ -99,7 +99,7 @@ public class main
 			}
 		}
 		else if(cmd.toLowerCase().equals("help")) {
-			System.out.println("This is the help message.");
+			System.out.println("This is the help message. You can use the \"look\" command to go around the " + curr.name + " and to know about " + curr.p + ", who is in this location . You can also have a chat with " + curr.p + " using the \"talk\" command to know more about the items available in the " + curr.name + ". To move to a different location, use the command \"walk\" followed by the direction you would like to move."   );
 		}
 		else
 		{
