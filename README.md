@@ -11,12 +11,12 @@ Witchcraft and Wizardry. The map was created by Remus Lupin (Moony), Peter
 Pettigrew (Wormtail), Sirius Black (Padfoot), and James Potter (Prongs) while they
 were attending Hogwarts.
 
+  <img src="https://images-na.ssl-images-amazon.com/images/I/81hXyIewnxL._AC_SY550_.jpg" height="256">
 Your task is to create in Java a Zork-like text adventure game simulating the use of
 the marauder’s map. The player inputs commands in the console to navigate around
 Hogwarts and to interact with characters or objects in each location.
 The map shows 3 locations that the player can go to. In each location, the player can talk with 1 character
 and use 2 objects. The locations’ details are as follows:
-  <img src="https://images-na.ssl-images-amazon.com/images/I/81hXyIewnxL._AC_SY550_.jpg">
   
 1. Dining hall: The dining hall is the biggest open area inside Hogwarts. In the dining hall, the player
 finds Professor Dumbledore. The player can use the sorting hat to get sorted randomly into one
