@@ -10,8 +10,9 @@ The Marauder's Map is a magical document that reveals all of Hogwarts School of
 Witchcraft and Wizardry. The map was created by Remus Lupin (Moony), Peter
 Pettigrew (Wormtail), Sirius Black (Padfoot), and James Potter (Prongs) while they
 were attending Hogwarts.
-
+<p align = "center">
   <img src="https://images-na.ssl-images-amazon.com/images/I/81hXyIewnxL._AC_SY550_.jpg" height="256">
+</p>
 Your task is to create in Java a Zork-like text adventure game simulating the use of
 the marauder’s map. The player inputs commands in the console to navigate around
 Hogwarts and to interact with characters or objects in each location.
