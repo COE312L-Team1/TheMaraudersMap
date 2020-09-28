@@ -1,6 +1,9 @@
 # COE 312 Software Design Homework 1
-![](<img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/efd55d2f-11a4-4df1-9bf7-1eccd3ebb813/d3ht4xu-589c204c-dfcb-4bfe-85a4-3ed40b9c8e2a.png" width="12">)
 ## *Hogwarts School of Witchcraft and Wizardry - The Marauder's Map*
+<p align = "center">
+  <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/efd55d2f-11a4-4df1-9bf7-1eccd3ebb813/d3ht4xu-589c204c-dfcb-4bfe-85a4-3ed40b9c8e2a.png" width="64">
+</p>
+
 ### The assignment was as follows:
 
 The Marauder's Map is a magical document that reveals all of Hogwarts School of
@@ -8,14 +11,13 @@ Witchcraft and Wizardry. The map was created by Remus Lupin (Moony), Peter
 Pettigrew (Wormtail), Sirius Black (Padfoot), and James Potter (Prongs) while they
 were attending Hogwarts.
 
-![](https://images-na.ssl-images-amazon.com/images/I/81hXyIewnxL._AC_SY550_.jpg)
-
 Your task is to create in Java a Zork-like text adventure game simulating the use of
 the marauder’s map. The player inputs commands in the console to navigate around
 Hogwarts and to interact with characters or objects in each location.
 The map shows 3 locations that the player can go to. In each location, the player can talk with 1 character
 and use 2 objects. The locations’ details are as follows:
-
+  <img src="https://images-na.ssl-images-amazon.com/images/I/81hXyIewnxL._AC_SY550_.jpg">
+  
 1. Dining hall: The dining hall is the biggest open area inside Hogwarts. In the dining hall, the player
 finds Professor Dumbledore. The player can use the sorting hat to get sorted randomly into one
 of the houses (Gryffindor, Hufflepuff, Ravenclaw and Slytherin), and hold food to eat.
