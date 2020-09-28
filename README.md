@@ -1,5 +1,5 @@
 # COE 312 Software Design Homework 1
-![](https://p1.hiclipart.com/preview/693/926/322/harry-potter-hogwarts-logo.jpg)
+![](<img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/efd55d2f-11a4-4df1-9bf7-1eccd3ebb813/d3ht4xu-589c204c-dfcb-4bfe-85a4-3ed40b9c8e2a.png" width="12">)
 ## *Hogwarts School of Witchcraft and Wizardry - The Marauder's Map*
 ### The assignment was as follows:
 
