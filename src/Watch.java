@@ -9,12 +9,12 @@ public class Watch implements java.lang.Runnable {
 	public void runTimer() {
 		int i = 180;
 		boolean timesup = false;
-		while (i > 0) {
+		while (i >= 0) {
 			try {
 				if (i == 60 || i == 120) {
 					synchronized (this) {
-						System.out.print("" + (i / 60) + " minute");
-						System.out.println((i / 120 == 1) ? " " : "s " + "passed");
+						System.out.print("\n" + (i / 60) + " minute");
+						System.out.println(((i == 120) ? "s " : " ") + "remaining");
 					}
 				}
 				if (i == 0 && !timesup) {
@@ -23,7 +23,7 @@ public class Watch implements java.lang.Runnable {
 						System.out.println("Time is up! 10 seconds to hide map contents!");
 						i += 10;
 					}
-				} else if (timesup) {
+				} else if (i == 0 && timesup) {
 					synchronized (this) {
 						System.out.println("YOU WERE CAUGHT! Marauder’s map has been confiscated!");
 					}

@@ -111,7 +111,7 @@ public class main
 		}
 	}
 	
-	public static void main(String[] args)
+	public static void main(String[] args) throws InterruptedException
 	{
 		// Location params: String name, String desc, Person p, Item a, Item b, Location north, Location south, Location east, Location west
 		Location Entrance = new Location("The Entrance", "You arrive at the doors of Hogwarts. The door on the north wall leads to\r\nthe dining hall, the passage to the east leads to the Potions class, and\r\nthe door to the west leads to the Library.",
@@ -179,6 +179,7 @@ public class main
 		}
 		
 		System.out.println("Hiding map contents...end.");
+		watch.join();
 		jin.close();
 	}
 }
