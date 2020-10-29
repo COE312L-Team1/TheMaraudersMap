@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class main
 {
-	/*				  =====
+	 /*				  =====
 	 * 				   MAP			N
 	 * 				  =====		W	+	E
 	 * 								S
@@ -12,6 +12,8 @@ public class main
 	 *Library <-->	Entrance  <-->	Potions Classroom
 	 * 
 	 * */
+	
+	static Thread watch = new Thread(new Watch());
 	
 	public static Location curr;
 	
@@ -159,6 +161,8 @@ public class main
 			else if(i == 3) { System.out.println("That's not the right magic phrase!\nThis is your last chance!"); }
 			else{ System.out.println("YOU DO NOT KNOW THE PHRASE!\nYou cannot be allowed to see the map... Bye!"); }
 		}
+		
+		watch.start();
 		
 		curr = Entrance;
 		System.out.println("\t\t"+curr.name);
