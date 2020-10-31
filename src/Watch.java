@@ -2,9 +2,13 @@
 public class Watch implements java.lang.Runnable {
 
 	int i;
-	
-	Watch() { i = 0; }
-	
+	Thread t;
+
+	Watch() { 
+		i = 0;
+		t = new Thread(this);
+	}
+
 	@Override
 	public void run() {
 		this.runTimer();
@@ -14,34 +18,30 @@ public class Watch implements java.lang.Runnable {
 	{
 		System.out.println("\n" + (180 - i) / 60 + " minutes and " + (180 - i) % 60 + " seconds left");
 	}
-	
+
 	public void runTimer() {
 		boolean timesup = false;
 		while (i <= 180) {
 			try {
 				if (i == 60 || i == 120) {
-					synchronized (this) {
-						System.out.print("\n" + (i / 60) + " minute");
-						System.out.println(((i == 120) ? "s " : " ") + "passed...");
-					}
+					System.out.print("\n" + (i / 60) + " minute");
+					System.out.print(((i == 120) ? "s " : " ") + "passed...\n> ");
 				}
 				if (i == 180 && !timesup) {
 					synchronized (this) {
 						timesup = true;
-						System.out.println("\nTime is up! 10 seconds to hide map contents!");
+						System.out.print("\nTime is up! 10 seconds to hide map contents!\n> ");
 						i -= 10;
 					}
 				} else if (i == 180 && timesup) {
 					synchronized (this) {
-						System.out.println("\nYOU WERE CAUGHT! Marauder’s map has been confiscated!");
+						System.out.print("\nYOU WERE CAUGHT! Marauder’s map has been confiscated!\n> ");
 					}
 				}
 				i++;
 				Thread.sleep(1000L);
 			} catch (InterruptedException e) {
-				synchronized (this) {
-					break;
-				}
+				break;
 			}
 		}
 		System.exit(0);

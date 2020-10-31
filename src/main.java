@@ -13,7 +13,13 @@ public class main
 	 * 
 	 * */
 	
-	static Thread watch = new Thread(new Watch());
+	static Watch watch = new Watch();
+	static Harry harry = new Harry(watch);
+	static Hermione hermione = new Hermione("Hermione",
+			"Huddled over a desk, you spot your friend, Hermione Granger, with her nose buried in a book.\nThis is where you usually find her, and if you have homework due\nthe next day, she's the person to go to!",
+			new String[]{"I'm reading a very interesting book on Blast-Ended Skrewts!","It's LeviOsa, not LeviosA!","Oh, are you doing magic? Let’s see it, then.","Have you seen Crookshanks? He must be off chasing Scabbers again!","I'm not letting you copy my homework again!","Would you like to join the Society for the Protection of Elvish Welfare?"});
+	
+
 	
 	public static Location curr;
 	
@@ -51,7 +57,7 @@ public class main
 		}
 		
 		if(type==1) {
-			System.out.println("\n\t\t"+curr.name);
+			System.out.println("\n\t\t"+ curr.name);
 			curr.look();
 		}
 		else if(type==2) {
@@ -65,6 +71,8 @@ public class main
 			{ curr = curr.west;	curr.enter(); }
 			else
 			{ System.out.println("You cannot "+verb+" there!"); }
+			harry.myLoc = curr;
+			hermione.HarryLoc = curr;
 		}
 		else if(type==3) {
 			if(curr.p != null && cmd.toLowerCase().contains(curr.p.name.toLowerCase()))
@@ -128,14 +136,12 @@ public class main
 		
 		Entrance.north = greatHall;
 		
-		Person Hermione = new Person("Hermione",
-				"Huddled over a desk, you spot your friend, Hermione Granger, with her nose buried in a book.\nThis is where you usually find her, and if you have homework due\nthe next day, she's the person to go to!",
-				new String[]{"I'm reading a very interesting book on Blast-Ended Skrewts!","It's LeviOsa, not LeviosA!","Oh, are you doing magic? Let’s see it, then.","Have you seen Crookshanks? He must be off chasing Scabbers again!","I'm not letting you copy my homework again!","Would you like to join the Society for the Protection of Elvish Welfare?"});
-		
 		Book book = new Book("Book","Nearby, you see a pile of books left by a student. Some of them seem interesting.",new String[] {"read"});
 		Quill quill = new Quill("Quill","You also spot a beautiful Eagle feather quill, that looks like it cost quite a few Galleons!",new String[] {"write with","write","use"});
 		Location Library = new Location("The Library", "You are in the ancient library of Hogwarts, where knowledge is abundant.\nAll around, you see hundreds of rows, thousands of shelves, filled with books\nof all kinds. From Divination to Dark Arts, there were books for every subject.",
-							 				Hermione, book, quill, null, null, Entrance, null);
+							 				hermione, book, quill, null, null, Entrance, null);
+		
+		hermione.MyLoc = Library;
 		
 		Entrance.west = Library;
 		
@@ -162,9 +168,14 @@ public class main
 			else{ System.out.println("YOU DO NOT KNOW THE PHRASE!\nYou cannot be allowed to see the map... Bye!"); }
 		}
 		
-		watch.start();
-		
+				
 		curr = Entrance;
+		
+		harry.myLoc = curr;
+		harry.t.start();
+		hermione.HarryLoc = curr;
+		hermione.t.start();
+		
 		System.out.println("\t\t"+curr.name);
 		curr.look();
 		
@@ -179,7 +190,7 @@ public class main
 		}
 		
 		System.out.println("Hiding map contents...end.");
-		watch.interrupt();
+		watch.t.interrupt();
 		jin.close();
 	}
 }
