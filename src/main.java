@@ -179,7 +179,7 @@ public class main
 		}
 		
 		System.out.println("Hiding map contents...end.");
-		watch.join();
+		watch.interrupt();
 		jin.close();
 	}
 }

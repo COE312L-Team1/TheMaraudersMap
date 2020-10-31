@@ -40,7 +40,7 @@ public class Watch implements java.lang.Runnable {
 				Thread.sleep(1000L);
 			} catch (InterruptedException e) {
 				synchronized (this) {
-					System.out.println(e.getMessage());
+					break;
 				}
 			}
 		}
