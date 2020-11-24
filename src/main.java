@@ -20,7 +20,8 @@ public class main
 			new String[]{"I'm reading a very interesting book on Blast-Ended Skrewts!","It's LeviOsa, not LeviosA!","Oh, are you doing magic? Let’s see it, then.","Have you seen Crookshanks? He must be off chasing Scabbers again!","I'm not letting you copy my homework again!","Would you like to join the Society for the Protection of Elvish Welfare?"});
 	
 
-	
+	static int m=0;
+	static int n=0;
 	public static Location curr;
 	
 	public static void process(String cmd, Location entrance) {
@@ -28,6 +29,7 @@ public class main
 		String[] look = new String[] {"look","observe","see","watch"};
 		String[] movement = new String[]{"move","go","walk","proceed","advance"};
 		String[] talk = new String[] {"talk","speak","chat"};
+		String[] make = new String[] {"make","prepare"};
 		
 		int type=-1;
 		String verb = "";
@@ -56,6 +58,14 @@ public class main
 			}
 		}
 		
+		for(String m:make) {
+			if(cmd.toLowerCase().contains(m)) {
+				type=4;
+				verb=m;
+				break;
+			}
+		}
+		
 		if(type==1) {
 			System.out.println("\n\t\t"+ curr.name);
 			curr.look();
@@ -79,6 +89,29 @@ public class main
 			{ curr.p.talk(curr); }
 			else
 			{ System.out.println("You see no such person!"); }
+		}
+		
+		else if(type == 4) {
+			if (cmd.contains("Polyjuice") && curr.name.equals("The Potions Classroom")) {
+				Polyjuice p = new Polyjuice();
+				p.prepareRecipe();
+				System.out.println("Potion is ready!");
+				n+=1;
+				System.out.println("You now have "+n+" flasks of Polyjuice");
+			}
+			
+			else if(cmd.contains("Invisibility") && curr.name.equals("The Potions Classroom")) {
+		
+				Invisibility p2 = new Invisibility();
+				p2.prepareRecipe();
+				System.out.println("Potion is ready!");
+				m+=1;
+				System.out.println("You now have "+n+" flasks of Polyjuice");
+			}
+			else
+			{
+				System.out.println("Cannot make that!");
+			}
 		}
 		else if(cmd.toLowerCase().contains("use")||(curr.a!=null && cmd.toLowerCase().contains(curr.a.name.toLowerCase())) || (curr.b!=null && cmd.toLowerCase().contains(curr.b.name.toLowerCase()))) { //use item
 			
