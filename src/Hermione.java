@@ -1,7 +1,7 @@
 public class Hermione extends Person implements Runnable {
-	
+
 	Location MyLoc;
-	Location HarryLoc;
+	Location playerLoc;
 	Thread t;
 
 	public Hermione(String name, String desc, String[] dialog) {
@@ -11,14 +11,13 @@ public class Hermione extends Person implements Runnable {
 	@Override
 	public void run() {
 		while(true) {
-			synchronized(this.HarryLoc) {
-				if(this.MyLoc==this.HarryLoc)
-				{
-					System.out.print("\nHermione: Harry I am here!\n> ");
-					break;
-				}
+			if(this.MyLoc.name.equals(this.playerLoc.name))
+			{
+				System.out.print("\nHermione: I am here!\n> ");
+				break;
 			}
-			
+			else
+				System.out.print("");
 		}
 	}
 }

@@ -7,6 +7,7 @@ public class Watch implements java.lang.Runnable {
 	Watch() { 
 		i = 0;
 		t = new Thread(this);
+		this.t.start();
 	}
 
 	@Override
@@ -21,21 +22,21 @@ public class Watch implements java.lang.Runnable {
 
 	public void runTimer() {
 		boolean timesup = false;
-		while (i <= 180) {
+		while (i <= 300) {
 			try {
-				if (i == 60 || i == 120) {
+				if (i % 60 == 0 && i != 0) {
 					System.out.print("\n" + (i / 60) + " minute");
-					System.out.print(((i == 120) ? "s " : " ") + "passed...\n> ");
+					System.out.print(((i > 60) ? "s " : " ") + "passed...\n> ");
 				}
-				if (i == 180 && !timesup) {
+				if (i == 300 && !timesup) {
 					synchronized (this) {
 						timesup = true;
 						System.out.print("\nTime is up! 10 seconds to hide map contents!\n> ");
 						i -= 10;
 					}
-				} else if (i == 180 && timesup) {
+				} else if (i == 300 && timesup) {
 					synchronized (this) {
-						System.out.print("\nYOU WERE CAUGHT! Marauder’s map has been confiscated!\n> ");
+						System.out.print("\nYOU WERE CAUGHT! Marauder's map has been confiscated!\n> ");
 					}
 				}
 				i++;
