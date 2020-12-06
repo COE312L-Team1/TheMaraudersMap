@@ -98,14 +98,14 @@ public class Driver
 		
 		System.out.println("\"Messrs Moony, Wormtail, Padfoot and Prongs Purveyors of Aids to\r\nmagical Mischief-Makers are proud to present THE MARAUDER'S MAP\"\r\nSay the magic phrase to reveal the map.");
 		
-		Scanner jin = new Scanner(System.in);
+		Scanner cin = new Scanner(System.in);
 		
 //		Commented for time being to ease debugging
-		for (int i = 1; !jin.nextLine().equalsIgnoreCase("I solemnly swear that I am up to no good"); i++) //
+		for (int i = 1; !cin.nextLine().equalsIgnoreCase("I solemnly swear that I am up to no good"); i++) //
 		{
 			if(i<3) { System.out.println("That's not the right magic phrase! Try again."); }
 			else if(i == 3) { System.out.println("That's not the right magic phrase!\nThis is your last chance!"); }
-			else{ System.out.println("YOU DO NOT KNOW THE PHRASE!\nYou cannot be allowed to see the map... Bye!"); }
+			else{ System.out.println("YOU DO NOT KNOW THE PHRASE!\nYou cannot be allowed to see the map... Bye!"); System.exit(0);}
 		}		
 		
 		hermione.playerLoc = curr;
@@ -114,7 +114,7 @@ public class Driver
 		curr.look();
 		
 		System.out.print("> ");
-		String input = jin.nextLine();
+		String input = cin.nextLine();
 		
 		while(!input.equalsIgnoreCase("mischief managed"))
 		{
@@ -128,11 +128,11 @@ public class Driver
 			hermione.playerLoc = curr;
 		
 			System.out.print("> ");
-			input = jin.nextLine();
+			input = cin.nextLine();
 		}
 		
 		System.out.println("Hiding map contents...end.");
-		jin.close();
+		cin.close();
 		System.exit(0);
 	}
 }

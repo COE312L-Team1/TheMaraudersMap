@@ -15,7 +15,7 @@ public class Quill extends Item {
 			if(!written.equals(""))	{ System.out.print("This is what you wrote before:\n"+written+"\n"); }
 			System.out.println("> Write something with the quill below");
 			written+=(quillinput.nextLine()+"\n");
-			//quillinput.close();	//do not do this, bcoz this closes the main program's jin scanner too
+			//quillinput.close();	//do not do this, bcoz this closes the main methods's cin scanner too
 		}
 		return ret;
 	}
